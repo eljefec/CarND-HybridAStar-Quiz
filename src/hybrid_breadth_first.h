@@ -48,7 +48,7 @@ public:
 
   	int idx(double float_num);
 
-  	vector<maze_s> expand(maze_s state);
+  	vector<maze_s> expand(const maze_s& state);
 
   	maze_path search(vector< vector<int> > grid, vector<double> start, vector<int> goal);
 
