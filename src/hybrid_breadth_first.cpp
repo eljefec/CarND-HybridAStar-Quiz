@@ -122,19 +122,15 @@ HBF::maze_path HBF::search(vector< vector<int> > grid, vector<double> start, vec
   closed_value[stack][idx(state.x)][idx(state.y)] = 1;
   came_from[stack][idx(state.x)][idx(state.y)] = state;
   int total_closed = 1;
-  // vector<maze_s> opened = {state};
+
   priority_queue<Heuristic> opened;
   opened.push(Heuristic(state, goal));
   bool finished = false;
   while(!opened.empty())
   {
 
-    const maze_s& next = opened.top().get_state();
+    maze_s next = opened.top().get_state();
     opened.pop();
-    /*
-    maze_s next = opened[0]; //grab first elment
-    opened.erase(opened.begin()); //pop first element
-    */
 
     int x = next.x;
     int y = next.y;
@@ -174,7 +170,6 @@ HBF::maze_path HBF::search(vector< vector<int> > grid, vector<double> start, vec
         state2.y = y2;
         state2.theta = theta2;
 
-        //opened.push_back(state2);
         opened.push(Heuristic(state2, goal));
 
         closed[stack2][idx(x2)][idx(y2)] = next_state[i];

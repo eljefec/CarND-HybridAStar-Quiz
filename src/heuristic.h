@@ -41,7 +41,7 @@ private:
 
   double heuristic() const
   {
-    return state.g + get_distance();
+    return get_distance();
   }
 
   HBF::maze_s state;
